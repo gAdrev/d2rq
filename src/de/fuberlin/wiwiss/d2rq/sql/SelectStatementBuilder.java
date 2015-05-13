@@ -162,6 +162,12 @@ public class SelectStatementBuilder {
 			result.append(" ");
 			result.append(s);
 		}
+
+		if (database.vendor().isRowNumLimitWrapping()) {
+			result.insert(0, "SELECT * FROM (");
+			result.append(") WHERE ");
+			result.append(database.vendor().getRowNumLimitAsWrappingSelectModifier(limit));
+		}
 						
 		return result.toString();
 	}

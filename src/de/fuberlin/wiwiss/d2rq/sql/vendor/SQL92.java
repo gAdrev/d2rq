@@ -222,5 +222,13 @@ public class SQL92 implements Vendor {
 	public void afterCancel(Connection connection) throws SQLException {
 		// Do nothing for standard SQL 92. Subclasses can override.
 	}
+
+	public String getRowNumLimitAsWrappingSelectModifier(int limit) {
+		return "";
+	}
+
+	public boolean isRowNumLimitWrapping() {
+		return false;
+	}
 }
 

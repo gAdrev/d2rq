@@ -121,7 +121,7 @@ public class SQLBuildingTest extends TestCase {
 		DummyDB db = new DummyDB(Vendor.Oracle);
 		db.setLimit(100);
 		Relation r = Relation.createSimpleRelation(db, new Attribute[]{foo});
-		assertEquals("SELECT DISTINCT \"table\".\"foo\" FROM \"table\" WHERE (ROWNUM <= 100)",
+		assertEquals("SELECT * FROM (SELECT DISTINCT \"table\".\"foo\" FROM \"table\") WHERE ROWNUM <= 100",
 				new SelectStatementBuilder(r).getSQLStatement());
 	}
 }

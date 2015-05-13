@@ -39,9 +39,14 @@ public class Oracle extends SQL92 {
 	}
 	
 	@Override
-	public Expression getRowNumLimitAsExpression(int limit) {
-		if (limit == Database.NO_LIMIT) return Expression.TRUE;
-		return SQLExpression.create("ROWNUM <= " + limit);
+	public String getRowNumLimitAsWrappingSelectModifier(int limit) {
+		if (limit == Database.NO_LIMIT) return "";
+		return "ROWNUM <= " + limit;
+	}
+
+	@Override
+	public boolean isRowNumLimitWrapping() {
+		return true;
 	}
 
 	@Override

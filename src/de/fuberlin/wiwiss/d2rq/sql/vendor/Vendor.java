@@ -103,6 +103,8 @@ public interface Vendor {
 	 */
 	Expression getRowNumLimitAsExpression(int limit);
 
+	String getRowNumLimitAsWrappingSelectModifier(int limit);
+
 	/**
 	 * Returns a modifier for the SELECT keyword that adds a limit
 	 * to the number of returned rows for engines that support this (<code>TOP n</code>)
@@ -159,6 +161,8 @@ public interface Vendor {
 	 */
 	boolean isIgnoredTable(String schema, String table);
 	
+	boolean isRowNumLimitWrapping();
+
 	/**
 	 * Vendor-specific initialization for a database connection.
 	 * 
