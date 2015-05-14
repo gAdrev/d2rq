@@ -40,7 +40,8 @@ public class Oracle extends SQL92 {
 	
 	@Override
 	public String getRowNumLimitAsWrappingSelectModifier(int limit) {
-		if (limit == Database.NO_LIMIT) return "";
+		// This is a WHERE expression, so return true, 1 in Oracle.
+		if (limit == Database.NO_LIMIT) return "1";
 		return "ROWNUM <= " + limit;
 	}
 
